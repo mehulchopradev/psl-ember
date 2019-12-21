@@ -3,11 +3,14 @@
         @value={{this.first}}
         @placeholder="First Number"
         @class="dum-first"/>
-    <XSelect @class="dum-ops" @value={{@ops}} as |xs|>
-        <xs.option @value="+" >+</xs.option>
-        <xs.option @value="-">-</xs.option>
-        <xs.option @value="*">*</xs.option>
-    </XSelect>
+    {{#x-select
+        class="dum-ops"
+        value=ops
+        on-change=(action "onOpsChange") as |xs|}}
+        {{#xs.option value="+"}}+{{/xs.option}}
+        {{#xs.option value="-"}}-{{/xs.option}}
+        {{#xs.option value="*"}}*{{/xs.option}}
+    {{/x-select}}
     <Input @type="text"
         @value={{this.second}}
         @placeholder="Second Number"
@@ -17,5 +20,9 @@
     <button {{action "onCalculate"}} class="dum-calc-btn">Calculate</button>
 </div>
 <div class="row">
-    <input type="text" class="dum-ans" placeholder="Ans" readonly>
+    <input type="text"
+        value={{ans}}
+        class="dum-ans"
+        placeholder="Ans"
+        readonly>
 </div>

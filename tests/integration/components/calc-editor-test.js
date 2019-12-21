@@ -35,4 +35,23 @@ module('Integration | Component | calc-editor', function(hooks) {
     
     assert.dom('.dum-ans').hasValue('40');
   });
+
+  test('enabling/disabling calculate btn', async function (assert) {
+    this.setProperties({
+      first: 6,
+      second: 3,
+      ops: '-',
+    });
+
+    await render(template);
+    assert.dom('.dum-calc-btn').isNotDisabled();
+
+    await fillIn('.dum-first', '');
+    assert.dom('.dum-calc-btn').isDisabled();
+
+    await fillIn('.dum-first', '7');
+    await fillIn('.dum-second', 'mehul');
+
+    assert.dom('.dum-calc-btn').isDisabled();
+  });
 });
