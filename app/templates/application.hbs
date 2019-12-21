@@ -1,5 +1,11 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-<WelcomePage />
-{{!-- Feel free to remove this! --}}
-
+<h1>Welcome to my utility app</h1>
+<hr>
+<div class="navbar">
+    <LinkTo @route="calculator">Calculator</LinkTo>|
+    <LinkTo @route="todos">Todos</LinkTo>|
+    <LinkTo @route="library">Library</LinkTo>
+</div>
 {{outlet}}
+<div class="footer">
+    Copyright 2019, All rights reserved
+</div>

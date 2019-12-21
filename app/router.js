@@ -7,4 +7,9 @@ export default class Router extends EmberRouter {
 }
 
 Router.map(function() {
+  this.route('calculator', {
+    path: '/calc'
+  });
+  this.route('todos');
+  this.route('library');
 });

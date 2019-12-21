@@ -1,0 +1,20 @@
+<div class="todo-add">
+    <Input @type="text"
+        @placeholder="Enter todo"
+        @value={{this.newTodo}}/>
+    <button {{action "onSaveTodo"}}
+        disabled={{this.saveDisabled}}>Save</button>
+</div>
+<div class="todo-list">
+    {{#each this.model as |todo|}}
+        <div class="todo-item">
+            <Input @type="checkbox"
+                @checked={{todo.done}}/>{{ todo.description }}
+        </div>
+    {{/each}}
+</div>
+<div class="todo-footer">
+    <button {{action "onCompletedTodos"}}
+        disabled={{this.disableClear}}>Clear Completed</button>
+    Completed ({{ this.noCompletedTodos }})
+</div>
