@@ -1,15 +1,21 @@
 <div class="row">
-    <input type="text" placeholder="First Number">
-    <select name="" id="">
-        <option>+</option>
-        <option>-</option>
-        <option>*</option>
-    </select>
-    <input type="text" placeholder="Second Number">
+    <Input @type="text"
+        @value={{this.first}}
+        @placeholder="First Number"
+        @class="dum-first"/>
+    <XSelect @class="dum-ops" @value={{@ops}} as |xs|>
+        <xs.option @value="+" >+</xs.option>
+        <xs.option @value="-">-</xs.option>
+        <xs.option @value="*">*</xs.option>
+    </XSelect>
+    <Input @type="text"
+        @value={{this.second}}
+        @placeholder="Second Number"
+        @class="dum-second"/>
 </div>
 <div class="row">
-    <button>Calculate</button>
+    <button {{action "onCalculate"}} class="dum-calc-btn">Calculate</button>
 </div>
 <div class="row">
-    <input type="text" placeholder="Ans" readonly>
+    <input type="text" class="dum-ans" placeholder="Ans" readonly>
 </div>
