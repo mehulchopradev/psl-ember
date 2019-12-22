@@ -36,6 +36,16 @@ module('Integration | Component | calc-editor', function(hooks) {
     assert.dom('.dum-ans').hasValue('40');
   });
 
+  test('it performs calc without selecting operation', async function (assert) {
+    await render(template);
+
+    await fillIn('.dum-first', '10');
+    await fillIn('.dum-second', '4');
+    await click('.dum-calc-btn');
+    
+    assert.dom('.dum-ans').hasValue('14');
+  });
+
   test('enabling/disabling calculate btn', async function (assert) {
     this.setProperties({
       first: 6,
@@ -53,5 +63,8 @@ module('Integration | Component | calc-editor', function(hooks) {
     await fillIn('.dum-second', 'mehul');
 
     assert.dom('.dum-calc-btn').isDisabled();
+
+    await fillIn('.dum-second', '8');
+    assert.dom('.dum-calc-btn').isNotDisabled();
   });
 });

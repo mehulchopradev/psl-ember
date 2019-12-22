@@ -1,1 +1,17 @@
-{{yield}}
+{{#if this.firstVisible}}
+    <div class="dum-first-container">
+        First No:<span class="dum-first">{{ @first }}</span>
+    </div>
+{{/if}}
+
+{{#if this.secondVisible}}
+    <div class="dum-second-container">
+        Second No: <span class="dum-second">{{ @second }}</span>
+    </div>
+{{/if}}
+
+{{#if this.ansVisible}}
+    <div class="dum-ans-container">
+        Ans is <span class="dum-ans">{{ @ans }}</span>
+    </div>
+{{/if}}

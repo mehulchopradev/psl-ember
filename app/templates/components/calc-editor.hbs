@@ -17,7 +17,9 @@
         @class="dum-second"/>
 </div>
 <div class="row">
-    <button {{action "onCalculate"}} class="dum-calc-btn">Calculate</button>
+    <button {{action "onCalculate"}}
+        class="dum-calc-btn"
+        disabled={{this.calcDisabled}}>Calculate</button>
 </div>
 <div class="row">
     <input type="text"

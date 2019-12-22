@@ -3,24 +3,53 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
+const template = hbs`<CalcResults
+  @first={{ first }}
+  @second={{ second }}
+  @ans={{ ans }}
+/>`;
+
 module('Integration | Component | calc-results', function(hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders', async function(assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
+  test('it renders with passed values', async function(assert) {
+    this.setProperties({
+      first: '8',
+      second: '4',
+      ans: '12',
+    })
+    await render(template);
 
-    await render(hbs`<CalcResults />`);
-
-    assert.equal(this.element.textContent.trim(), '');
-
-    // Template block usage:
-    await render(hbs`
-      <CalcResults>
-        template block text
-      </CalcResults>
-    `);
-
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    assert.dom('.dum-first-container').exists();
+    assert.dom('.dum-second-container').exists();
+    assert.dom('.dum-ans-container').exists();
+    assert.dom('.dum-first').hasText('8');
+    assert.dom('.dum-second').hasText('4');
+    assert.dom('.dum-ans').hasText('12');
   });
+
+  test('it hides/shows elements based on values', async function (assert) {
+    await render(template);
+
+    assert.dom('.dum-first-container').doesNotExist();
+    assert.dom('.dum-second-container').doesNotExist();
+    assert.dom('.dum-ans-container').doesNotExist();
+
+    this.setProperties({
+      first: '8',
+      second: '4',
+    });
+
+    assert.dom('.dum-first-container').exists()
+    assert.dom('.dum-second-container').exists()
+    assert.dom('.dum-ans-container').doesNotExist();
+
+    this.setProperties({
+      ans: '12',
+    });
+
+    assert.dom('.dum-first-container').exists()
+    assert.dom('.dum-second-container').exists()
+    assert.dom('.dum-ans-container').exists();
+  })
 });
