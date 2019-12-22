@@ -38,3 +38,7 @@ h1 {
 .row > select {
     margin: 10px;
 }
+
+.calc-results-container {
+     text-align: center;
+}

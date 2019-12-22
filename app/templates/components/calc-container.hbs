@@ -2,9 +2,13 @@
   @first={{first}}
   @second={{second}}
   @ops={{ops}}
+
+  @onAnsCalculated={{action "onAnsCalculated"}}
 />
-<CalcResults
-  @first={{ first }}
-  @second={{ second }}
-  @ans={{ ans }}
-/>
+<div class="calc-results-container">
+    <CalcResults
+        @first={{ first }}
+        @second={{ second }}
+        @ans={{ ans }}
+    />
+</div>

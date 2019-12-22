@@ -42,7 +42,7 @@ export default Component.extend({
             }
 
             this.set('ans', result + '');
-
+            this.onAnsCalculated(this.ans);
         },
 
         onOpsChange(operation) {

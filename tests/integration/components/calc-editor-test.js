@@ -7,10 +7,18 @@ const template = hbs`<CalcEditor
   @first={{first}}
   @second={{second}}
   @ops={{ops}}
+
+  @onAnsCalculated={{ onAnsCalculated }}
 />`
 
 module('Integration | Component | calc-editor', function(hooks) {
   setupRenderingTest(hooks);
+
+  hooks.beforeEach(function () {
+    this.setProperties({
+      onAnsCalculated: () => {},
+    })
+  });
 
   test('it renders with initial values', async function(assert) {
     this.setProperties({

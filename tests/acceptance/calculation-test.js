@@ -1,16 +1,12 @@
 import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
-import { render, fillIn, click, pauseTest } from '@ember/test-helpers';
-import { hbs } from 'ember-cli-htmlbars';
+import { visit, fillIn, click } from '@ember/test-helpers';
+import { setupApplicationTest } from 'ember-qunit';
 
-const template = hbs`<CalcContainer/>`;
+module('Acceptance | calculation', function(hooks) {
+  setupApplicationTest(hooks);
 
-module('Integration | Component | calc-container', function(hooks) {
-  setupRenderingTest(hooks);
-
-  test('it performs end to end calculation', async function(assert) {
-
-    await render(template);
+  test('verify calculation', async function(assert) {
+    await visit('/calc');
 
     await fillIn('.dum-first', '10');
     await fillIn('.dum-second', '4');
