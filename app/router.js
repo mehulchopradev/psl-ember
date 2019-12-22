@@ -11,5 +11,15 @@ Router.map(function() {
     path: '/calc'
   });
   this.route('todos');
-  this.route('library');
+  this.route('library', function() {
+    this.route('book-details', {
+      path: '/books/:book_id'
+    });
+
+    this.route('index', function() {
+      this.route('list', function() {
+        this.route('new');
+      });
+    });
+  });
 });

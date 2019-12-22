@@ -1,0 +1,32 @@
+<div class="book-list center">
+    <table border="1">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    TITLE
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each model as |book|}}
+                <tr>
+                    <td>{{ book.id }}</td>
+                    <td>{{ucase book.title }}</td>
+                    <td>
+                        <LinkTo
+                            @route="library.book-details"
+                            @model={{book.id}}>Details</LinkTo>
+                    </td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+<div class="footer-action center">
+    <LinkTo @route="library.index.list.new">Add Book</LinkTo>
+</div>
+{{outlet}}
